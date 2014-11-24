@@ -1,6 +1,6 @@
 #import "CLKBlurView.h"
 #import "CLKGfx.h"
-#import "FXBlurView.h"
+#import <FXBlurView/FXBlurView.h>
 
 #define kCLKBlurViewDefaultTintStyle CLKBlurViewTintDark
 

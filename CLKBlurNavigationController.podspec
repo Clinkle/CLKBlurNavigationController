@@ -7,6 +7,8 @@ Pod::Spec.new do |s|
   s.author           = { "tsheaff" => "tyler@clinkle.com" }
   s.source           = { :git => "https://github.com/Clinkle/CLKBlurNavigationController.git", :tag => s.version.to_s }
 
+  s.dependency 'FXBlurView', :git => 'https://github.com/Clinkle/FXBlurView.git', :branch => 'clinkle_podspec'
+
   s.platform     = :ios, '7.0'
   s.requires_arc = true
   s.source_files = 'Pod/Classes'
