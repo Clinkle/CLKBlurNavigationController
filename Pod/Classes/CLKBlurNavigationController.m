@@ -247,8 +247,10 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
             completion();
         }
         if (weakSelf.transitionAfterCompletionBlock) {
-            weakSelf.transitionAfterCompletionBlock();
+            weakSelf.presenting = NO;
+            TransitionAfterCompletionBlockType completionBlock = weakSelf.transitionAfterCompletionBlock;
             weakSelf.transitionAfterCompletionBlock = NULL;
+            completionBlock();
         }
     };
 
