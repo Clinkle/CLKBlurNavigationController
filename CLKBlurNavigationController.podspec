@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/Clinkle/CLKBlurNavigationController"
   s.license          = 'MIT'
   s.author           = { "tsheaff" => "tyler@clinkle.com" }
-  s.source           = { :git => "git://git@github.com/Clinkle/CLKBlurNavigationController.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/Clinkle/CLKBlurNavigationController.git", :tag => s.version.to_s }
 
   s.dependency 'FXBlurView', '~> 1.4.4c'
 
