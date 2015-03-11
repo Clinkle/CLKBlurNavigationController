@@ -13,6 +13,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 @property (nonatomic, strong) UIViewController *visibleViewController;
 
 @property (nonatomic, strong) CLKBlurView *blurView;
+@property (nonatomic, assign) CLKBlurViewTintStyle blurTintStyle;
 
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UIButton *closeButton;
@@ -32,8 +33,16 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController
 {
+    return [self initWithRootViewController:rootViewController
+                               andTintStyle:CLKBlurViewTintDark];
+}
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
+                              andTintStyle:(CLKBlurViewTintStyle)tintStyle
+{
     self = [super init];
     if (self) {
+        self.blurTintStyle = tintStyle;
         [self pushViewController:rootViewController
                         animated:NO];
         self.hidesBackButton = NO;
@@ -680,7 +689,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 - (void)createBlurView
 {
-    self.blurView = [[CLKBlurView alloc] init];
+    self.blurView = [[CLKBlurView alloc] initWithTintStyle:self.blurTintStyle];
     self.blurView.frame = self.view.bounds;
     self.blurView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.blurView];

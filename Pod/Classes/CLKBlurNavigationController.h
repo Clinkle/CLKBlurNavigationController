@@ -45,6 +45,8 @@ typedef NS_ENUM(NSUInteger, CLKBlurNavigationDirection)
 @property (nonatomic, assign) BOOL showsCloseButton;
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController;
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
+                              andTintStyle:(CLKBlurViewTintStyle)tintStyle;
 
 /**
  * @input view: the view in which to show the controller. pass nil for the application's UIWindow
