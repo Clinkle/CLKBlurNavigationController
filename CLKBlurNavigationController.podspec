@@ -7,7 +7,9 @@ Pod::Spec.new do |s|
   s.author           = { "tsheaff" => "tyler@clinkle.com" }
   s.source           = { :git => "https://github.com/Clinkle/CLKBlurNavigationController.git", :tag => s.version.to_s }
 
-  s.dependency 'FXBlurView', '~> 1.4.4c'
+  s.dependency 'CLKParametricAnimations', '~> 0.1.0'
+  s.dependency 'FrameAccessor', '~> 1.3.2'
+  s.dependency 'FXBlurView', '~> 1.6.3'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true

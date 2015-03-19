@@ -1,5 +1,6 @@
 #import "CLKBlurNavigationController.h"
-#import "CLKGfx.h"
+#import "CLKBlurGraphicsUtils.h"
+#import <FrameAccessor/FrameAccessor.h>
 
 #define kHorizontalOffset 300
 #define kVerticalOffset 568
@@ -13,6 +14,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 @property (nonatomic, strong) UIViewController *visibleViewController;
 
 @property (nonatomic, strong) CLKBlurView *blurView;
+@property (nonatomic, assign) CLKBlurViewTintStyle blurTintStyle;
 
 @property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, strong) UIButton *closeButton;
@@ -32,8 +34,16 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController
 {
+    return [self initWithRootViewController:rootViewController
+                               andTintStyle:CLKBlurViewTintDark];
+}
+
+- (instancetype)initWithRootViewController:(UIViewController *)rootViewController
+                              andTintStyle:(CLKBlurViewTintStyle)tintStyle
+{
     self = [super init];
     if (self) {
+        self.blurTintStyle = tintStyle;
         [self pushViewController:rootViewController
                         animated:NO];
         self.hidesBackButton = NO;
@@ -64,7 +74,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
     }
 
     if (view == nil) {
-        view = [CLKGfx window];
+        view = [CLKBlurGraphicsUtils window];
     }
 
     view.userInteractionEnabled = NO;
@@ -529,9 +539,9 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
     [self.controllerStackContainer addSubview:self.closeButton];
     self.closeButton.alpha = 1;
 
-    [CLKGfx animateView:self.closeButton
-  easingBackAndComingIn:YES
-           withDuration:0.36];
+    [CLKBlurGraphicsUtils animateView:self.closeButton
+                easingBackAndComingIn:YES
+                         withDuration:0.36];
 }
 
 - (void)hideTitleLabel:(CLKBlurNavigationDirection)direction
@@ -645,9 +655,9 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
         return;
     }
     self.closeButton.userInteractionEnabled = NO;
-    [CLKGfx animateView:self.closeButton
-  easingBackAndComingIn:NO
-           withDuration:0.36];
+    [CLKBlurGraphicsUtils animateView:self.closeButton
+                easingBackAndComingIn:NO
+                         withDuration:0.36];
 }
 
 #pragma mark -
@@ -672,7 +682,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 - (void)createControllerStackContainer
 {
-    self.controllerStackContainer = [[UIView alloc] initWithFrame:[CLKGfx window].bounds];
+    self.controllerStackContainer = [[UIView alloc] initWithFrame:[CLKBlurGraphicsUtils window].bounds];
     self.controllerStackContainer.backgroundColor = [UIColor clearColor];
     self.controllerStackContainer.clipsToBounds = NO;
     [self.view addSubview:self.controllerStackContainer];
@@ -680,7 +690,7 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 - (void)createBlurView
 {
-    self.blurView = [[CLKBlurView alloc] init];
+    self.blurView = [[CLKBlurView alloc] initWithTintStyle:self.blurTintStyle];
     self.blurView.frame = self.view.bounds;
     self.blurView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:self.blurView];

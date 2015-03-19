@@ -1,5 +1,5 @@
 #import "CLKBlurView.h"
-#import "CLKGfx.h"
+#import "CLKBlurGraphicsUtils.h"
 #import <FXBlurView/FXBlurView.h>
 
 #define kCLKBlurViewDefaultTintStyle CLKBlurViewTintDark
@@ -88,7 +88,7 @@
 - (void)initializeForIOS7WithTintStyle:(CLKBlurViewTintStyle)style
                        andBlurBehavior:(CLKBlurViewBlurBehavior)behavior
 {
-    if (![CLKGfx is4InchDisplay] && behavior != CLKBlurViewForceDynamicBlur) {
+    if (![CLKBlurGraphicsUtils is4InchDisplay] && behavior != CLKBlurViewForceDynamicBlur) {
         [self initializeForLowMemoryIOS7WithTintStyle:style];
     } else {
         [self setClipsToBounds:YES];
@@ -119,7 +119,7 @@
     fxBlurView.blurRadius = 25.f;
     fxBlurView.dynamic = NO;
     fxBlurView.tintColor = [UIColor clearColor];
-    fxBlurView.underlyingView = [CLKGfx window];
+    fxBlurView.underlyingView = [CLKBlurGraphicsUtils window];
     
     self.tintView = [[UIView alloc] init];
     switch (style) {
