@@ -32,6 +32,11 @@ typedef void(^TransitionAfterCompletionBlockType)(void);
 
 @implementation CLKBlurNavigationController
 
+- (instancetype)init
+{
+    return [self initWithRootViewController:nil];
+}
+
 - (instancetype)initWithRootViewController:(UIViewController *)rootViewController
 {
     return [self initWithRootViewController:rootViewController
