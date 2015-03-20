@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CLKBlurNavigationController"
-  s.version          = "0.2.4"
+  s.version          = "0.2.5"
   s.summary          = "A re-implementation of UIViewController that provides for OS-independent blur behind each screen"
   s.homepage         = "https://github.com/Clinkle/CLKBlurNavigationController"
   s.license          = 'MIT'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'CLKParametricAnimations', '~> 0.1.0'
   s.dependency 'FrameAccessor', '~> 1.3.2'
-  s.dependency 'FXBlurView-Clinkle', '~> 1.4.5'
+  s.dependency 'FXBlurView-Clinkle', '1.4.5'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
