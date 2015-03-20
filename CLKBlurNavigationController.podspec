@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CLKBlurNavigationController"
-  s.version          = "0.2.5"
+  s.version          = "0.2.6"
   s.summary          = "A re-implementation of UIViewController that provides for OS-independent blur behind each screen"
   s.homepage         = "https://github.com/Clinkle/CLKBlurNavigationController"
   s.license          = 'MIT'
